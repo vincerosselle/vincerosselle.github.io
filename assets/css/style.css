@@ -1048,3 +1048,8 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/* custom css code below */
+  .width-10rem {
+    width: 10rem;
+  }
