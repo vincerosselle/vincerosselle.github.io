@@ -1020,9 +1020,9 @@ section {
   padding: 0;
   margin: 0 0 40px 0;
 }
-#footer .social-links {
+/* #footer .social-links {
   margin: 0 0 40px 0;
-}
+} */
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
