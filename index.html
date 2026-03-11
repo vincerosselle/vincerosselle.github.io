@@ -448,38 +448,43 @@
 
     .toggle-icon {
       position: absolute;
+      top: 50%;
+      left: 50%;
       width: 22px;
       height: 22px;
+      margin-top: -11px;
+      margin-left: -11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  opacity   0.35s ease !important;
+      /* Override the global * transition for these specific props */
+      transition:
+        transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity   0.35s ease !important;
+      will-change: transform, opacity;
     }
 
     .toggle-icon svg {
       width: 20px;
       height: 20px;
-      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      display: block;
+      /* No extra transitions on svg itself */
+      transition: none !important;
     }
 
-    /* Sun icon */
-    .icon-sun {
-      color: #e8c96e;
-    }
+    /* Sun icon colour */
+    .icon-sun  { color: #e8c96e; }
 
-    /* Moon icon */
-    .icon-moon {
-      color: #8eb4d8;
-    }
+    /* Moon icon colour */
+    .icon-moon { color: #8eb4d8; }
 
-    /* In dark mode: show sun (to switch to light), hide moon */
-    [data-theme="dark"] .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
-    [data-theme="dark"] .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+    /* In dark mode: show sun (clicking switches to light), hide moon */
+    [data-theme="dark"]  .icon-sun  { opacity: 1; transform: rotate(0deg)   scale(1);   pointer-events: auto;  }
+    [data-theme="dark"]  .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); pointer-events: none;  }
 
-    /* In light mode: show moon (to switch to dark), hide sun */
-    [data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(90deg) scale(0.5); }
-    [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+    /* In light mode: show moon (clicking switches to dark), hide sun */
+    [data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(90deg)  scale(0.4); pointer-events: none;  }
+    [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg)   scale(1);   pointer-events: auto;  }
 
     /* Spin animation on click */
     #theme-toggle.spinning .toggle-icon {
