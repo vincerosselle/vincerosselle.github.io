@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -27,545 +27,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <style>
-    /* =============================================
-       THEME VARIABLES
-       ============================================= */
-
-    /* Dark Mode (default) */
-    [data-theme="dark"] {
-      --bg-primary:       #0d0d0d;
-      --bg-secondary:     #111111;
-      --bg-section-alt:   #141414;
-      --bg-card:          #1a1a1a;
-      --bg-header:        rgba(13, 13, 13, 0.97);
-      --text-primary:     #e8e6e1;
-      --text-secondary:   #a0998f;
-      --text-muted:       #5c5650;
-      --text-heading:     #f0ede8;
-      --accent:           #c9a96e;
-      --accent-hover:     #e0c090;
-      --accent-glow:      rgba(201, 169, 110, 0.18);
-      --accent-subtle:    rgba(201, 169, 110, 0.08);
-      --border-color:     rgba(201, 169, 110, 0.12);
-      --border-light:     rgba(255, 255, 255, 0.06);
-      --shadow-soft:      0 4px 30px rgba(0, 0, 0, 0.5);
-      --shadow-card:      0 8px 32px rgba(0, 0, 0, 0.6);
-      --hero-overlay:     rgba(13, 13, 13, 0.72);
-      --nav-active-bg:    rgba(201, 169, 110, 0.12);
-      --toggle-bg:        #1e1e1e;
-      --toggle-border:    rgba(201, 169, 110, 0.3);
-      --icon-box-bg:      #161616;
-      --input-bg:         #161616;
-      --input-border:     rgba(201, 169, 110, 0.2);
-      --input-focus:      rgba(201, 169, 110, 0.4);
-      --scrollbar-track:  #111;
-      --scrollbar-thumb:  #333;
-      --theme-icon:       "☀";
-    }
-
-    /* Light Mode */
-    [data-theme="light"] {
-      --bg-primary:       #faf9f7;
-      --bg-secondary:     #ffffff;
-      --bg-section-alt:   #f5f3ef;
-      --bg-card:          #ffffff;
-      --bg-header:        rgba(250, 249, 247, 0.97);
-      --text-primary:     #2a2520;
-      --text-secondary:   #6b6259;
-      --text-muted:       #b0a89e;
-      --text-heading:     #1a1510;
-      --accent:           #a0722a;
-      --accent-hover:     #7a5520;
-      --accent-glow:      rgba(160, 114, 42, 0.15);
-      --accent-subtle:    rgba(160, 114, 42, 0.07);
-      --border-color:     rgba(160, 114, 42, 0.15);
-      --border-light:     rgba(0, 0, 0, 0.07);
-      --shadow-soft:      0 4px 30px rgba(0, 0, 0, 0.08);
-      --shadow-card:      0 8px 32px rgba(0, 0, 0, 0.1);
-      --hero-overlay:     rgba(250, 249, 247, 0.65);
-      --nav-active-bg:    rgba(160, 114, 42, 0.1);
-      --toggle-bg:        #ffffff;
-      --toggle-border:    rgba(160, 114, 42, 0.25);
-      --icon-box-bg:      #f9f7f4;
-      --input-bg:         #ffffff;
-      --input-border:     rgba(160, 114, 42, 0.2);
-      --input-focus:      rgba(160, 114, 42, 0.35);
-      --scrollbar-track:  #f0ede8;
-      --scrollbar-thumb:  #c9b89a;
-      --theme-icon:       "☾";
-    }
-
-    /* =============================================
-       GLOBAL TRANSITIONS
-       ============================================= */
-    *,
-    *::before,
-    *::after {
-      transition:
-        background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        color            0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow       0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        opacity          0.3s ease,
-        fill             0.45s ease;
-    }
-
-    /* =============================================
-       SCROLLBAR
-       ============================================= */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-    ::-webkit-scrollbar-thumb {
-      background: var(--scrollbar-thumb);
-      border-radius: 3px;
-    }
-
-    /* =============================================
-       BODY & LAYOUT
-       ============================================= */
-    body {
-      background-color: var(--bg-primary) !important;
-      color: var(--text-primary) !important;
-    }
-
-    /* =============================================
-       HEADER / SIDEBAR
-       ============================================= */
-    #header {
-      background: var(--bg-header) !important;
-      border-right: 1px solid var(--border-color) !important;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .nav-menu a {
-      color: var(--text-secondary) !important;
-    }
-
-    .nav-menu a:hover,
-    .nav-menu .active {
-      color: var(--accent) !important;
-      background: var(--nav-active-bg) !important;
-    }
-
-    .nav-menu a i {
-      color: var(--accent) !important;
-    }
-
-    /* =============================================
-       HERO
-       ============================================= */
-    #hero {
-      background-color: var(--bg-primary) !important;
-      position: relative;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--accent-glow), transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    #hero .container { position: relative; z-index: 1; }
-
-    #hero h1 {
-      color: var(--text-heading) !important;
-      letter-spacing: -0.5px;
-    }
-
-    #hero p {
-      color: var(--text-secondary) !important;
-    }
-
-    #hero p .typed {
-      color: var(--accent) !important;
-    }
-
-    /* =============================================
-       SECTIONS
-       ============================================= */
-    .section-bg,
-    .skills.section-bg,
-    .portfolio.section-bg {
-      background-color: var(--bg-section-alt) !important;
-    }
-
-    .about,
-    .resume,
-    .services,
-    .contact {
-      background-color: var(--bg-primary) !important;
-    }
-
-    .section-title h2 {
-      color: var(--text-heading) !important;
-    }
-
-    .section-title h2::after {
-      background: var(--accent) !important;
-    }
-
-    .section-title p {
-      color: var(--text-secondary) !important;
-    }
-
-    /* =============================================
-       ABOUT
-       ============================================= */
-    .about .content h3 {
-      color: var(--text-heading) !important;
-    }
-
-    .about .content p {
-      color: var(--text-primary) !important;
-    }
-
-    .about .content ul li {
-      color: var(--text-primary) !important;
-    }
-
-    .about .content ul li strong {
-      color: var(--accent) !important;
-    }
-
-    .about .content ul li i {
-      color: var(--accent) !important;
-    }
-
-    /* =============================================
-       RESUME
-       ============================================= */
-    .resume-title {
-      color: var(--accent) !important;
-    }
-
-    .resume-item {
-      border-left: 2px solid var(--border-color) !important;
-    }
-
-    .resume-item::before {
-      background: var(--accent) !important;
-      border-color: var(--border-color) !important;
-    }
-
-    .resume-item h4 {
-      color: var(--text-heading) !important;
-    }
-
-    .resume-item h5 {
-      background: var(--accent-subtle) !important;
-      color: var(--accent) !important;
-      border: 1px solid var(--border-color) !important;
-    }
-
-    .resume-item p,
-    .resume-item ul li {
-      color: var(--text-secondary) !important;
-    }
-
-    /* =============================================
-       PORTFOLIO
-       ============================================= */
-    #portfolio-flters li {
-      color: var(--text-secondary) !important;
-      border: 1px solid var(--border-color) !important;
-      background: var(--bg-card) !important;
-    }
-
-    #portfolio-flters li:hover,
-    #portfolio-flters li.filter-active {
-      background: var(--accent) !important;
-      color: var(--bg-primary) !important;
-      border-color: var(--accent) !important;
-    }
-
-    .portfolio-item .portfolio-wrap {
-      background: var(--bg-card) !important;
-      border: 1px solid var(--border-light) !important;
-      box-shadow: var(--shadow-card) !important;
-    }
-
-    .portfolio-info {
-      background: var(--bg-card) !important;
-    }
-
-    .portfolio-info h4 {
-      color: var(--text-heading) !important;
-    }
-
-    .portfolio-info p {
-      color: var(--text-secondary) !important;
-    }
-
-    /* =============================================
-       SERVICES
-       ============================================= */
-    .services .icon-box {
-      background: var(--icon-box-bg) !important;
-      border: 1px solid var(--border-light) !important;
-      box-shadow: var(--shadow-card) !important;
-    }
-
-    .services .icon-box h4 {
-      color: var(--text-heading) !important;
-    }
-
-    .services .icon-box p {
-      color: var(--text-secondary) !important;
-    }
-
-    /* =============================================
-       CONTACT
-       ============================================= */
-    .contact .info .email i {
-      background: var(--accent-subtle) !important;
-      color: var(--accent) !important;
-      border: 1px solid var(--border-color) !important;
-    }
-
-    .contact .info .email h4 {
-      color: var(--text-heading) !important;
-    }
-
-    .contact .info .email p {
-      color: var(--text-secondary) !important;
-    }
-
-    .contact .php-email-form input,
-    .contact .php-email-form textarea {
-      background: var(--input-bg) !important;
-      color: var(--text-primary) !important;
-      border: 1px solid var(--input-border) !important;
-    }
-
-    .contact .php-email-form input::placeholder,
-    .contact .php-email-form textarea::placeholder {
-      color: var(--text-muted) !important;
-    }
-
-    .contact .php-email-form input:focus,
-    .contact .php-email-form textarea:focus {
-      border-color: var(--accent) !important;
-      box-shadow: 0 0 0 3px var(--input-focus) !important;
-      outline: none;
-    }
-
-    .contact .php-email-form button[type="submit"] {
-      background: var(--accent) !important;
-      color: var(--bg-primary) !important;
-      border: none !important;
-    }
-
-    .contact .php-email-form button[type="submit"]:hover {
-      background: var(--accent-hover) !important;
-    }
-
-    /* =============================================
-       FOOTER
-       ============================================= */
-    #footer {
-      background: var(--bg-secondary) !important;
-      border-top: 1px solid var(--border-color) !important;
-    }
-
-    #footer h3 {
-      color: var(--text-heading) !important;
-    }
-
-    #footer p {
-      color: var(--text-secondary) !important;
-    }
-
-    #footer .social-links a {
-      background: var(--bg-card) !important;
-      color: var(--text-secondary) !important;
-      border: 1px solid var(--border-color) !important;
-    }
-
-    #footer .social-links a:hover {
-      background: var(--accent) !important;
-      color: var(--bg-primary) !important;
-      border-color: var(--accent) !important;
-    }
-
-    #footer .copyright,
-    #footer .credits {
-      color: var(--text-muted) !important;
-    }
-
-    /* =============================================
-       BACK TO TOP
-       ============================================= */
-    .back-to-top {
-      background: var(--accent) !important;
-      color: var(--bg-primary) !important;
-    }
-
-    .back-to-top:hover {
-      background: var(--accent-hover) !important;
-    }
-
-    /* =============================================
-       THEME TOGGLE BUTTON
-       ============================================= */
-    #theme-toggle {
-      position: fixed;
-      bottom: 65px;
-      right: 10px;
-      z-index: 9999;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--toggle-bg);
-      border: 1.5px solid var(--toggle-border);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 0 0 0 var(--accent-glow);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      /* No global transition override for this button's transform */
-      transition:
-        background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        border-color     0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow       0.35s ease,
-        transform        0.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-
-    #theme-toggle:hover {
-      box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 6px var(--accent-glow);
-      transform: scale(1.1) !important;
-    }
-
-    #theme-toggle:active {
-      transform: scale(0.93) !important;
-    }
-
-    .toggle-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 22px;
-      height: 22px;
-      margin-top: -11px;
-      margin-left: -11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* Override the global * transition for these specific props */
-      transition:
-        transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity   0.35s ease !important;
-      will-change: transform, opacity;
-    }
-
-    .toggle-icon svg {
-      width: 20px;
-      height: 20px;
-      display: block;
-      /* No extra transitions on svg itself */
-      transition: none !important;
-    }
-
-    /* Sun icon colour */
-    .icon-sun  { color: #e8c96e; }
-
-    /* Moon icon colour */
-    .icon-moon { color: #8eb4d8; }
-
-    /* In dark mode: show sun (clicking switches to light), hide moon */
-    [data-theme="dark"]  .icon-sun  { opacity: 1; transform: rotate(0deg)   scale(1);   pointer-events: auto;  }
-    [data-theme="dark"]  .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.4); pointer-events: none;  }
-
-    /* In light mode: show moon (clicking switches to dark), hide sun */
-    [data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(90deg)  scale(0.4); pointer-events: none;  }
-    [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg)   scale(1);   pointer-events: auto;  }
-
-    /* Spin animation on click */
-    #theme-toggle.spinning .toggle-icon {
-      animation: spin-icon 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-    }
-
-    @keyframes spin-icon {
-      0%   { transform: rotate(0deg) scale(1); }
-      50%  { transform: rotate(180deg) scale(0.7); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-
-    /* =============================================
-       PAGE THEME TRANSITION OVERLAY
-       ============================================= */
-    #theme-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      pointer-events: none;
-      opacity: 0;
-      background: var(--bg-primary);
-      transition: opacity 0.25s ease;
-    }
-
-    #theme-overlay.flash {
-      animation: theme-flash 0.45s ease forwards;
-    }
-
-    @keyframes theme-flash {
-      0%   { opacity: 0; }
-      30%  { opacity: 0.35; }
-      100% { opacity: 0; }
-    }
-
-    /* =============================================
-       RIPPLE EFFECT
-       ============================================= */
-    .ripple {
-      position: fixed;
-      border-radius: 50%;
-      transform: scale(0);
-      animation: ripple-expand 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-      pointer-events: none;
-      z-index: 9997;
-      mix-blend-mode: screen;
-    }
-
-    [data-theme="light"] .ripple {
-      mix-blend-mode: multiply;
-    }
-
-    @keyframes ripple-expand {
-      0%   { transform: scale(0); opacity: 0.4; }
-      100% { transform: scale(1); opacity: 0; }
-    }
-
-    /* =============================================
-       MOBILE NAV TOGGLE
-       ============================================= */
-    .mobile-nav-toggle {
-      color: var(--accent) !important;
-    }
-
-    /* =============================================
-       MISC OVERRIDES
-       ============================================= */
-    a {
-      color: var(--accent) !important;
-    }
-
-    a:hover {
-      color: var(--accent-hover) !important;
-    }
-
-    /* Ensure images don't get color transitions */
-    img {
-      transition: opacity 0.3s ease !important;
-    }
-  </style>
-
   <!-- =======================================================
   * Template Name: MyResume - v4.7.0
   * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
@@ -576,31 +37,12 @@
 
 <body>
 
-  <!-- Theme Overlay -->
-  <div id="theme-overlay"></div>
-
-  <!-- ======= Theme Toggle Button ======= -->
-  <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
-    <!-- Sun icon (shown in dark mode) -->
-    <span class="toggle-icon icon-sun">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-        <circle cx="12" cy="12" r="4.5"/>
-        <path stroke-linecap="round" d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-      </svg>
-    </span>
-    <!-- Moon icon (shown in light mode) -->
-    <span class="toggle-icon icon-moon">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
-      </svg>
-    </span>
-  </button>
-
   <!-- ======= Mobile nav toggle button ======= -->
+  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
-
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex flex-column justify-content-center">
+
     <nav id="navbar" class="navbar nav-menu">
       <ul>
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
@@ -610,8 +52,9 @@
         <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
       </ul>
-    </nav>
-  </header>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
@@ -620,6 +63,7 @@
       <p>I'm <span class="typed" data-typed-items="Web Developer, WordPress Developer, Shopify Developer, Web Designer, Graphic Designer, Freelancer"></span></p>
     </div>
   </section>
+<!-- End Hero -->
 
   <main id="main">
 
@@ -661,7 +105,42 @@
           </div>
         </div>
       </div>
-    </section>
+    </section><!-- End About Section -->
+
+    
+          <!-- ======= Facts Section ======= -->
+<!--     <section id="facts" class="facts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Facts</h2>
+          <p>I want to land a job in a reputable company so I may broaden my knowledge, talents, and learning. Obtain a responsible employment opportunity that will allow me to make the most of my education and experience while significantly contributing to the company's success.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Projects</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="bi bi-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Awards</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Facts Section -->
+    
 
 <!-- ======= Skills Section ======= -->
     <section id="skills" class="skills section-bg">
@@ -671,6 +150,8 @@
           <p>Experienced in building and customizing WordPress and Shopify websites, including theme development, plugin integration, WooCommerce setup, and performance optimization. Proficient in writing clean, semantic HTML5 and CSS3 with a strong grasp of responsive design, Bootstrap, and JavaScript. Skilled in PHP development including custom shortcodes, ACF field groups, and custom post types. Adept at using modern page builders such as Elementor, Breakdance, and Divi to deliver pixel-perfect layouts. Experienced with design tools like Figma, Adobe Photoshop, and Canva for wireframing, mockups, and UI design. Familiar with AI-assisted development workflows using Claude Code and Cursor to streamline project delivery.</p>
         </div>
         <div class="row skills-content">
+
+          <!-- Row 1: Core Web -->
           <div class="row">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
               <img src="assets/img/html-5.png" class="img-fluid width-10rem" alt="html5">
@@ -685,6 +166,8 @@
               <img src="assets/img/php.svg" class="img-fluid width-10rem" alt="php">
             </div>
           </div>
+
+          <!-- Row 2: CMS & E-Commerce -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
               <img src="assets/img/wordpress.png" class="img-fluid width-10rem" alt="wordpress">
@@ -699,6 +182,8 @@
               <img src="assets/img/bootstrap.svg" class="img-fluid width-10rem" alt="bootstrap">
             </div>
           </div>
+
+          <!-- Row 3: Page Builders -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
               <img src="assets/img/elementor.png" class="img-fluid width-10rem" alt="elementor">
@@ -713,6 +198,8 @@
               <img src="assets/img/acf.png" class="img-fluid width-10rem" alt="acf">
             </div>
           </div>
+
+          <!-- Row 4: Design Tools -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
               <img src="assets/img/figma.png" class="img-fluid width-10rem" alt="figma">
@@ -727,17 +214,23 @@
               <img src="assets/img/vscode.png" class="img-fluid width-10rem" alt="vs code">
             </div>
           </div>
+
         </div>
       </div>
-    </section>
+    </section><!-- End Skills Section -->
+
+
+    
 
 <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">
       <div class="container" data-aos="fade-up">
+
         <div class="section-title">
           <h2>Resume</h2>
           <p>Results-driven Web Developer with 3+ years of professional experience building and maintaining websites for clients across various industries. Proficient in WordPress, Shopify, and modern page builders, with a strong command of front-end technologies and custom PHP development. Highly adaptable and self-directed, with a track record of delivering quality work independently as a freelancer. Passionate about clean code, intuitive user experiences, and leveraging AI-assisted tools to work more efficiently.</p>
         </div>
+
         <div class="row">
           <div class="col-lg-6">
             <h3 class="resume-title">Summary</h3>
@@ -751,6 +244,7 @@
                 <li><a href="https://vincerosselle.github.io/" target="_blank">vincerosselle.github.io</a></li>
               </ul>
             </div>
+
             <h3 class="resume-title">Education</h3>
             <div class="resume-item">
               <h4>Bachelor of Science in Information Technology</h4>
@@ -771,6 +265,7 @@
               <p>Completed 392-hour training covering hardware diagnostics, installation, inspection, repair, and maintenance of computer systems.</p>
             </div>
           </div>
+
           <div class="col-lg-6">
             <h3 class="resume-title">Professional Experience</h3>
             <div class="resume-item">
@@ -820,16 +315,22 @@
             </div>
           </div>
         </div>
+
       </div>
-    </section>
+    </section><!-- End Resume Section -->
+
+
+    
 
 <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio section-bg">
       <div class="container" data-aos="fade-up">
+
         <div class="section-title">
           <h2>Portfolio</h2>
           <p>Here's a selection of projects I've had the pleasure of working on, from custom WordPress builds and Shopify stores to graphic design work and game development. Each project reflects my commitment to clean code, thoughtful design, and delivering results that meet client goals.</p>
         </div>
+
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <ul id="portfolio-flters">
@@ -840,7 +341,9 @@
             </ul>
           </div>
         </div>
+
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-game">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="Mt. Pinatubo Survival Game">
@@ -854,6 +357,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-anjomigration.png" class="img-fluid" alt="Anjo Migration">
@@ -867,6 +371,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-strategybusiness.png" class="img-fluid" alt="Strategy Business">
@@ -880,6 +385,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-triumphconstruction.png" class="img-fluid" alt="Triumph Construction">
@@ -893,6 +399,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-exceedfinance.png" class="img-fluid" alt="Exceed Finance">
@@ -906,6 +413,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-mbibalkayatiling.png" class="img-fluid" alt="MBI Balkaya Tiling">
@@ -919,6 +427,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-palmersselfstorage.png" class="img-fluid" alt="Palmers Self Storage">
@@ -932,6 +441,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-thesocialsuite.png" class="img-fluid" alt="The Social Suite">
@@ -945,6 +455,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-meatshop.png" class="img-fluid" alt="Meat Shop">
@@ -958,6 +469,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-graphics">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-timeless-elegance.png" class="img-fluid" alt="Beauty Related">
@@ -971,6 +483,7 @@
               </div>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 portfolio-item filter-graphics">
             <div class="portfolio-wrap">
               <img src="assets/img/portfolio/front-luxury-related.png" class="img-fluid" alt="Luxury Related">
@@ -984,18 +497,26 @@
               </div>
             </div>
           </div>
+
         </div>
+
       </div>
-    </section>
+    </section><!-- End Portfolio Section -->
+
+
+    
 
 <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
+
         <div class="section-title">
           <h2>Services</h2>
           <p>I'm a freelance web developer specializing in WordPress, Shopify, and custom web solutions. From building fully functional websites to designing polished interfaces and graphics, I help clients establish a strong online presence. Let's work together and build something great!</p>
         </div>
+
         <div class="row">
+
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box iconbox-yellow">
               <div class="icon">
@@ -1008,6 +529,7 @@
               <p>I build custom WordPress and Shopify websites tailored to your goals, from theme customization and plugin integration to WooCommerce setups, custom PHP shortcodes, and ACF-powered content structures. Every site I build is fast, responsive, and easy to manage.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box iconbox-red">
               <div class="icon">
@@ -1020,6 +542,7 @@
               <p>I design clean, modern, and user-friendly websites using Figma for wireframing and mockups, then bring them to life with page builders like Elementor, Breakdance, and Divi. I focus on responsive layouts, intuitive navigation, and visuals that reflect your brand identity.</p>
             </div>
           </div>
+
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box iconbox-teal">
               <div class="icon">
@@ -1032,28 +555,54 @@
               <p>From social media creatives to branding materials, I use Adobe Photoshop, Figma, and Canva to craft visuals that communicate effectively and look great. Whether you need a banner, a mockup, or a full set of brand graphics, I deliver designs that make an impact.</p>
             </div>
           </div>
+
         </div>
+
       </div>
-    </section>
+    </section><!-- End Services Section -->
+
+
+
+
+    
+
+    <!-- ======= Testimonials Section ======= -->
+
+    <!-- End Testimonials Section -->
+
+
+
+    
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
+
         <div class="section-title">
           <h2>Contact</h2>
         </div>
+
         <div class="row mt-1">
+
           <div class="col-lg-4">
             <div class="info">
+              
+
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
                 <p>vincerosselleatillo@gmail.com</p>
               </div>
+
+              
+
             </div>
+
           </div>
+
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="https://formspree.io/f/meqdojkg" method="post" role="form" class="php-email-form">
+
+            <form action="https://formspree.io/f/meqdojkg" method="post" role="form" class="php-email-form" >
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -1062,29 +611,42 @@
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
+              
               <div class="form-group mt-3">
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
+
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
+
               <input type="hidden" name="_next" values="https://vincerosselle.github.io/" />
               <input type="hidden" name="_subject" values="New Query Submitted." />
+
+
               <div class="my-3">
+
+               
+                
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
               <div class="text-center">
+
                 <a href="https://vincerosselle.github.io/"><button type="submit">Send Message</button></a>
+                 
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </section>
 
-  </main>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -1101,9 +663,15 @@
       <div class="copyright">
         &copy; Copyright <strong><span>Vince Rosselle Portfolio</span></strong>. All Rights Reserved
       </div>
-      <div class="credits"></div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: [license-url] -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
+<!--         Designed by <a href="https://vincerosselle.github.io/">Me</a> -->
+      </div>
     </div>
-  </footer>
+  </footer><!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -1118,77 +686,10 @@
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- ======= Theme Toggle Script ======= -->
-  <script>
-    (function () {
-      const html      = document.documentElement;
-      const btn       = document.getElementById('theme-toggle');
-      const overlay   = document.getElementById('theme-overlay');
-      const STORAGE_KEY = 'vra-theme';
-
-      /* ── Restore saved preference ── */
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        html.setAttribute('data-theme', saved);
-      } else {
-        /* Default to system preference if no saved preference */
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-      }
-
-      /* ── Ripple helper ── */
-      function spawnRipple(x, y, theme) {
-        const size   = Math.max(window.innerWidth, window.innerHeight) * 2.5;
-        const ripple = document.createElement('div');
-        ripple.classList.add('ripple');
-        ripple.style.cssText = `
-          width:  ${size}px;
-          height: ${size}px;
-          left:   ${x - size / 2}px;
-          top:    ${y - size / 2}px;
-          background: ${theme === 'light'
-            ? 'radial-gradient(circle, rgba(240,230,210,0.55) 0%, transparent 70%)'
-            : 'radial-gradient(circle, rgba(20,14,6,0.55) 0%, transparent 70%)'};
-        `;
-        document.body.appendChild(ripple);
-        ripple.addEventListener('animationend', () => ripple.remove());
-      }
-
-      /* ── Toggle handler ── */
-      btn.addEventListener('click', function (e) {
-        const current = html.getAttribute('data-theme');
-        const next    = current === 'dark' ? 'light' : 'dark';
-
-        /* Ripple from button position */
-        const rect = btn.getBoundingClientRect();
-        spawnRipple(rect.left + rect.width / 2, rect.top + rect.height / 2, next);
-
-        /* Flash overlay */
-        overlay.classList.remove('flash');
-        void overlay.offsetWidth; /* reflow */
-        overlay.classList.add('flash');
-
-        /* Spin the button icon */
-        btn.classList.remove('spinning');
-        void btn.offsetWidth;
-        btn.classList.add('spinning');
-        btn.addEventListener('animationend', () => btn.classList.remove('spinning'), { once: true });
-
-        /* Apply theme */
-        html.setAttribute('data-theme', next);
-        localStorage.setItem(STORAGE_KEY, next);
-      });
-
-      /* ── Listen for system preference changes ── */
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        }
-      });
-    })();
-  </script>
-
 </body>
+
 </html>
