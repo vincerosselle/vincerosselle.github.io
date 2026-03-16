@@ -261,4 +261,43 @@
     })
   });
 
+  /**
+   * Dark/Light mode toggle
+   */
+  const themeToggle = select('#theme-toggle');
+  if (themeToggle) {
+    // Apply saved theme immediately (also handled by inline script for flash prevention)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const thumb = themeToggle.querySelector('.toggle-thumb');
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      // Set CSS variable for bounce animation direction
+      thumb.style.setProperty('--thumb-x', newTheme === 'dark' ? '26px' : '0px');
+
+      // Trigger bounce animation
+      thumb.classList.remove('animate');
+      void thumb.offsetWidth; // force reflow
+      thumb.classList.add('animate');
+
+      // Apply theme
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Listen for OS theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
 })()
