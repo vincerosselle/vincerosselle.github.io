@@ -1577,7 +1577,7 @@ body *::after {
 
 /* Footer in dark mode */
 [data-theme="dark"] #footer {
-  background: #020617;
+  background: #0f172a;
 }
 
 /* Facts (if enabled) */

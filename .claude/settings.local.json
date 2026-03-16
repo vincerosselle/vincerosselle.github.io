@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -c \"c:\\\\Users\\\\vince\\\\OneDrive\\\\Documents\\\\vincerosselle.github.io\\\\assets\\\\img\\\\mypic-nobg2.png\")",
+      "Bash(sed -i 's|<img src=\"\"assets/img/javascript.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"javascript\"\">|<img src=\"\"assets/img/javascript.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"javascript\"\" loading=\"\"lazy\"\" decoding=\"\"async\"\" width=\"\"160\"\" height=\"\"160\"\">|g' index.html)",
+      "Bash(sed -i 's|<img src=\"\"assets/img/php.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"php\"\">|<img src=\"\"assets/img/php.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"php\"\" loading=\"\"lazy\"\" decoding=\"\"async\"\" width=\"\"160\"\" height=\"\"160\"\">|g' index.html)",
+      "Bash(sed -i 's|<img src=\"\"assets/img/wordpress.png\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"wordpress\"\">|<img src=\"\"assets/img/wordpress.png\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"wordpress\"\" loading=\"\"lazy\"\" decoding=\"\"async\"\" width=\"\"160\"\" height=\"\"160\"\">|g' index.html)",
+      "Bash(sed -i 's|<img src=\"\"assets/img/shopify.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"shopify\"\">|<img src=\"\"assets/img/shopify.svg\"\" class=\"\"img-fluid width-10rem\"\" alt=\"\"shopify\"\" loading=\"\"lazy\"\" decoding=\"\"async\"\" width=\"\"160\"\" height=\"\"160\"\">|g' index.html)"
+    ]
+  }
+}

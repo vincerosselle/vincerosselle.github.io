@@ -13,19 +13,35 @@
   <link href="assets/img/favicon3.png" rel="icon">
   <link href="assets/img/favicon3.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Preconnect to Google Fonts for faster fetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <!-- Preload critical above-fold image -->
+  <link rel="preload" href="assets/img/mypic-nobg2.png" as="image">
+
+  <!-- Google Fonts — trimmed to only used weights, with display=swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Critical CSS — Bootstrap + main stylesheet (render-blocking, needed for first paint) -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Non-critical CSS — deferred (icons, animations, lightbox, swiper) -->
+  <link rel="preload" href="assets/vendor/bootstrap-icons/bootstrap-icons.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"></noscript>
+
+  <link rel="preload" href="assets/vendor/boxicons/css/boxicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"></noscript>
+
+  <link rel="preload" href="assets/vendor/aos/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/aos/aos.css" rel="stylesheet"></noscript>
+
+  <link rel="preload" href="assets/vendor/glightbox/css/glightbox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"></noscript>
+
+  <link rel="preload" href="assets/vendor/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"></noscript>
 
   <!-- Prevent flash of wrong theme on load -->
   <script>
@@ -110,7 +126,7 @@
         </div>
         <div class="row">
           <div class="col-lg-4">
-            <img src="assets/img/mypic2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/mypic2.jpg" class="img-fluid" alt="Vince Rosselle Atillo" width="400" height="400" fetchpriority="high" decoding="async">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
             <h3>Freelance Web Developer</h3>
@@ -188,64 +204,64 @@
           <!-- Row 1: Core Web -->
           <div class="row">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/html-5.png" class="img-fluid width-10rem" alt="html5">
+              <img src="assets/img/html-5.png" class="img-fluid width-10rem" alt="html5" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/css-3.png" class="img-fluid width-10rem" alt="css3">
+              <img src="assets/img/css-3.png" class="img-fluid width-10rem" alt="css3" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/javascript.svg" class="img-fluid width-10rem" alt="javascript">
+              <img src="assets/img/javascript.svg" class="img-fluid width-10rem" alt="javascript" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/php.svg" class="img-fluid width-10rem" alt="php">
+              <img src="assets/img/php.svg" class="img-fluid width-10rem" alt="php" loading="lazy" decoding="async" width="160" height="160">
             </div>
           </div>
 
           <!-- Row 2: CMS & E-Commerce -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/wordpress.png" class="img-fluid width-10rem" alt="wordpress">
+              <img src="assets/img/wordpress.png" class="img-fluid width-10rem" alt="wordpress" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/shopify.svg" class="img-fluid width-10rem" alt="shopify">
+              <img src="assets/img/shopify.svg" class="img-fluid width-10rem" alt="shopify" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/woocommerce.svg" class="img-fluid width-10rem" alt="woocommerce">
+              <img src="assets/img/woocommerce.svg" class="img-fluid width-10rem" alt="woocommerce" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/bootstrap.svg" class="img-fluid width-10rem" alt="bootstrap">
+              <img src="assets/img/bootstrap.svg" class="img-fluid width-10rem" alt="bootstrap" loading="lazy" decoding="async" width="160" height="160">
             </div>
           </div>
 
           <!-- Row 3: Page Builders -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/elementor.png" class="img-fluid width-10rem" alt="elementor">
+              <img src="assets/img/elementor.png" class="img-fluid width-10rem" alt="elementor" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/breakdance.png" class="img-fluid width-10rem" alt="breakdance">
+              <img src="assets/img/breakdance.png" class="img-fluid width-10rem" alt="breakdance" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/divi.png" class="img-fluid width-10rem" alt="divi">
+              <img src="assets/img/divi.png" class="img-fluid width-10rem" alt="divi" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/acf.png" class="img-fluid width-10rem" alt="acf">
+              <img src="assets/img/acf.png" class="img-fluid width-10rem" alt="acf" loading="lazy" decoding="async" width="160" height="160">
             </div>
           </div>
 
           <!-- Row 4: Design Tools -->
           <div class="row margin-top-30px margin-top-0-mobile">
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/figma.png" class="img-fluid width-10rem" alt="figma">
+              <img src="assets/img/figma.png" class="img-fluid width-10rem" alt="figma" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/photoshop.png" class="img-fluid width-10rem" alt="photoshop">
+              <img src="assets/img/photoshop.png" class="img-fluid width-10rem" alt="photoshop" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/canva-icon.png" class="img-fluid width-10rem" alt="canva">
+              <img src="assets/img/canva-icon.png" class="img-fluid width-10rem" alt="canva" loading="lazy" decoding="async" width="160" height="160">
             </div>
             <div class="col-12 col-md-3 col-lg-3 text-align-center margin-bottom-25px-mobile align-content-center">
-              <img src="assets/img/vscode.png" class="img-fluid width-10rem" alt="vs code">
+              <img src="assets/img/vscode.png" class="img-fluid width-10rem" alt="vs code" loading="lazy" decoding="async" width="160" height="160">
             </div>
           </div>
 
@@ -380,7 +396,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-game">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="Mt. Pinatubo Survival Game">
+              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="Mt. Pinatubo Survival Game" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Mt. Pinatubo Survival Game</h4>
                 <p>Game</p>
@@ -394,7 +410,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-anjomigration.png" class="img-fluid" alt="Anjo Migration">
+              <img src="assets/img/portfolio/front-anjomigration.png" class="img-fluid" alt="Anjo Migration" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Anjo Migration</h4>
                 <p>Web</p>
@@ -408,7 +424,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-strategybusiness.png" class="img-fluid" alt="Strategy Business">
+              <img src="assets/img/portfolio/front-strategybusiness.png" class="img-fluid" alt="Strategy Business" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Strategy Business</h4>
                 <p>Web</p>
@@ -422,7 +438,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-triumphconstruction.png" class="img-fluid" alt="Triumph Construction">
+              <img src="assets/img/portfolio/front-triumphconstruction.png" class="img-fluid" alt="Triumph Construction" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Triumph Construction</h4>
                 <p>Web</p>
@@ -436,7 +452,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-exceedfinance.png" class="img-fluid" alt="Exceed Finance">
+              <img src="assets/img/portfolio/front-exceedfinance.png" class="img-fluid" alt="Exceed Finance" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Exceed Finance</h4>
                 <p>Web</p>
@@ -450,7 +466,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-mbibalkayatiling.png" class="img-fluid" alt="MBI Balkaya Tiling">
+              <img src="assets/img/portfolio/front-mbibalkayatiling.png" class="img-fluid" alt="MBI Balkaya Tiling" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>MBI Balkaya Tiling</h4>
                 <p>Web</p>
@@ -464,7 +480,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-palmersselfstorage.png" class="img-fluid" alt="Palmers Self Storage">
+              <img src="assets/img/portfolio/front-palmersselfstorage.png" class="img-fluid" alt="Palmers Self Storage" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Palmers Self Storage</h4>
                 <p>Web</p>
@@ -478,7 +494,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-thesocialsuite.png" class="img-fluid" alt="The Social Suite">
+              <img src="assets/img/portfolio/front-thesocialsuite.png" class="img-fluid" alt="The Social Suite" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>The Social Suite</h4>
                 <p>Web</p>
@@ -493,7 +509,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-phgfc.png" class="img-fluid" alt="Port Hacking Game Fishing Club">
+              <img src="assets/img/portfolio/front-phgfc.png" class="img-fluid" alt="Port Hacking Game Fishing Club" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Port Hacking Game Fishing Club</h4>
                 <p>Web</p>
@@ -508,7 +524,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-swpp.png" class="img-fluid" alt="Scientific Waterproofing Products">
+              <img src="assets/img/portfolio/front-swpp.png" class="img-fluid" alt="Scientific Waterproofing Products" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Scientific Waterproofing Products</h4>
                 <p>Web</p>
@@ -523,7 +539,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-meatshop.png" class="img-fluid" alt="Meat Shop">
+              <img src="assets/img/portfolio/front-meatshop.png" class="img-fluid" alt="Meat Shop" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Meat Shop</h4>
                 <p>Web</p>
@@ -537,7 +553,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-graphics">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-timeless-elegance.png" class="img-fluid" alt="Beauty Related">
+              <img src="assets/img/portfolio/front-timeless-elegance.png" class="img-fluid" alt="Beauty Related" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Beauty Related</h4>
                 <p>Graphics</p>
@@ -551,7 +567,7 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-graphics">
             <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/front-luxury-related.png" class="img-fluid" alt="Luxury Related">
+              <img src="assets/img/portfolio/front-luxury-related.png" class="img-fluid" alt="Luxury Related" loading="lazy" decoding="async" width="600" height="400">
               <div class="portfolio-info">
                 <h4>Luxury Related</h4>
                 <p>Graphics</p>
@@ -736,19 +752,19 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS Files — defer non-critical scripts -->
+  <script src="assets/vendor/purecounter/purecounter.js" defer></script>
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
+  <script src="assets/vendor/typed.js/typed.min.js" defer></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js" defer></script>
+  <script src="assets/vendor/php-email-form/validate.js" defer></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
 
 </body>
 
