@@ -178,6 +178,14 @@
         itemSelector: '.portfolio-item'
       });
 
+      // Re-layout Isotope when lazy-loaded images finish loading
+      let portfolioImages = portfolioContainer.querySelectorAll('img');
+      portfolioImages.forEach(function(img) {
+        img.addEventListener('load', function() {
+          portfolioIsotope.layout();
+        });
+      });
+
       let portfolioFilters = select('#portfolio-flters li', true);
 
       on('click', '#portfolio-flters li', function(e) {
