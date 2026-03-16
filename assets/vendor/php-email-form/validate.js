@@ -64,11 +64,26 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+      // Support both Formspree JSON responses and plain "OK" text
+      let isSuccess = false;
+      if (data.trim() === 'OK') {
+        isSuccess = true;
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        try {
+          let json = JSON.parse(data);
+          if (json.ok || json.success || json.next) {
+            isSuccess = true;
+          }
+        } catch(e) {
+          // not JSON, check if response was 200 (already passed response.ok check)
+          isSuccess = true;
+        }
+      }
+      if (isSuccess) {
+        thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.reset();
+      } else {
+        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action);
       }
     })
     .catch((error) => {
@@ -79,8 +94,9 @@
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
     thisForm.querySelector('.sent-message').classList.remove('d-block');
-    thisForm.querySelector('.sent-message').classList.add('d-block');
-    thisForm.reset(); 
+    let errorMessage = thisForm.querySelector('.error-message');
+    errorMessage.innerHTML = typeof error === 'string' ? error : 'Something went wrong. Please try again later.';
+    errorMessage.classList.add('d-block');
   }
 
 })();
